@@ -100,7 +100,14 @@ class Trabajador {
 
 	public function Registrar(Trabajador $data){
 		try{
-            $sql = "INSERT INTO trabajador (nombre,apellido_p,apellido_m,tipo_doc,num_doc,sexo,fecha_nacimiento,departamento,provincia,distrito,direccion,estado,fecha_registro) 
+			$numero_doc = $data->num_doc;
+			$nuevo_usuario="SELECT num_doc FROM trabajador WHERE num_doc='$numero_doc'";
+			$query = $this->pdo->prepare($nuevo_usuario);
+			$query->execute();
+			if($query->fetchColumn()>0){
+				echo '<script>alert("Usuario ya existe")</script>';
+			}else{
+			$sql = "INSERT INTO trabajador (nombre,apellido_p,apellido_m,tipo_doc,num_doc,sexo,fecha_nacimiento,departamento,provincia,distrito,direccion,estado,fecha_registro) 
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             $this->pdo->prepare($sql)
@@ -121,6 +128,7 @@ class Trabajador {
                         date('Y-m-d')
                     )
                 );
+			}
 		} catch (Exception $e){
 			die($e->getMessage());
 		}
