@@ -1,4 +1,4 @@
-## Rock &amp; Drill[website]
+## [Rock &amp; Drill][website]
 
 ### Caso Práctico - Planilla de Trabajadores con PHP
 
