@@ -3,8 +3,7 @@ jQuery.fn.validate = function ()
     /* Mensajes por defecto */
     var _mensaje = {
         campo_obligatorio: 'Este campo es obligatorio',
-        campo_min: 'Este campo debe tener como mínimo {0} caracteres',
-        campo_edad: 'No eres mayor de edad'
+        campo_min: 'Este campo debe tener como mínimo {0} caracteres'
     };
 
     var form = $(this);

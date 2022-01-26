@@ -100,10 +100,11 @@
 
 <script>
     $(document).ready(function(){
+        // Validar formulario
         $("#frm-planilla").submit(function(){
             return $(this).validate();
         });
-
+        // Cargar Provincias del Dpto. seleccionado
         $("#departamento").change(function(){
         var id_dpto= $("#departamento").val();
             $.ajax({
@@ -115,7 +116,7 @@
                 }
             });
         });
-
+        // Cargar distritos de Provincia seleccionada
         $("#provincia").change(function(){
         var id_provincia= $("#provincia").val();
             $.ajax({
@@ -127,7 +128,7 @@
                 }
             });
         });
-
+        // N° máximo por cada tipo Doc
         $("#tipoDoc").change(function(){
             var id_tipoDoc = $("#tipoDoc").val();
             
@@ -141,13 +142,14 @@
         });
     })
 
+    // Solo números
     function onlyNumberKey(evt) {
         var ASCIICode = (evt.which) ? evt.which : evt.keyCode
         if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
             return false;
         return true;
       }
-
+    // Mayor de edad por fecha de nacimiento
     $(document).ready(function(){
         $("#fecha_nac").change(function(){
             var fecha= $("#fecha_nac").val();

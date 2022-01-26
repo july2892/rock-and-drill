@@ -1,7 +1,7 @@
 <?php 
 include '../../model/database.php';
 
-if(isset($_POST['id_dpto'])){
+if(isset($_POST['id_dpto'])){ // Cargar solo provincias del Departamento seleccionado
     $pdo = Database::connect();
     $sql = 'SELECT * FROM provincias WHERE idDepartamento = ' . $_POST['id_dpto'];
     $opcionesProvincias = '<option value="">Seleccione Provincia</option>';
@@ -12,7 +12,7 @@ if(isset($_POST['id_dpto'])){
 
     echo $opcionesProvincias;
 
-}else if(isset($_POST['id_provincia'])){
+}else if(isset($_POST['id_provincia'])){ // Cargar solo distritos de provincia seleccionada
     $pdo = Database::connect();
     $sql = 'SELECT * FROM distritos WHERE idProvincia = ' . $_POST['id_provincia'];
     $opcionesDistritos = '<option value="">Seleccione Distrito</option>';
@@ -23,7 +23,7 @@ if(isset($_POST['id_dpto'])){
 
     echo $opcionesDistritos;
 
-}else if(isset($_POST['fecha'])){
+}else if(isset($_POST['fecha'])){ // Verificar mayor de edad por fecha de nacimiento
     list($ano,$mes,$dia) = explode("-",$_POST['fecha']);
     
     $ano_diferencia  = date("Y") - $ano;
@@ -38,10 +38,6 @@ if(isset($_POST['id_dpto'])){
             echo'';
         }
     }
-      
-    
-
-    
 }
 	
 
